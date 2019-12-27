@@ -14,7 +14,8 @@ public class SimpleFileServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SimpleFileServerApplication.class, args);
 		Undertow server = Undertow.builder().addHttpListener(8084, "localhost")
-				.setHandler(resource(new PathResourceManager(Paths.get(System.getProperty("user.dir")), 100))
+				.setHandler(resource(new PathResourceManager(Paths.get(System.getProperty("user.dir")
+						, System.getProperty("file.separator"), "Folder"), 100))
 						.setDirectoryListingEnabled(true))
 				.build();
 		server.start();
